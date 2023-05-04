@@ -1,5 +1,4 @@
 import { createClient } from '@vitest/ws-client'
-// eslint-disable-next-line no-restricted-imports
 import type { ResolvedConfig } from 'vitest'
 import type { CancelReason, VitestRunner } from '@vitest/runner'
 import { createBrowserRunner } from './runner'
@@ -22,7 +21,7 @@ export const ENTRY_URL = `${
 
 let config: ResolvedConfig | undefined
 let runner: VitestRunner | undefined
-const browserHashMap = new Map<string, string>()
+const browserHashMap = new Map<string, [test: boolean, timestamp: string]>()
 
 const url = new URL(location.href)
 const testId = url.searchParams.get('id') || 'unknown'
@@ -130,7 +129,7 @@ async function runTests(paths: string[], config: ResolvedConfig) {
     })
 
     const now = `${new Date().getTime()}`
-    files.forEach(i => browserHashMap.set(i, now))
+    files.forEach(i => browserHashMap.set(i, [true, now]))
 
     for (const file of files)
       await startTests([file], runner)

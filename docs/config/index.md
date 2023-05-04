@@ -776,6 +776,8 @@ The reporter has three different types:
   }
   ```
 
+Since Vitest 0.31.0, you can check your coverage report in Vitest UI: check [Vitest UI Coverage](/guide/coverage#vitest-ui) for more details.
+
 #### coverage.skipFull
 
 - **Type:** `boolean`
@@ -1403,6 +1405,7 @@ This config option affects truncating values in `test.each` titles and inside th
 - **Type:** `number`
 - **Default:** `0`
 - **CLI**: `--bail=<value>`
+- **Version:** Since Vitest 0.31.0
 
 Stop test execution when given number of tests have failed.
 
